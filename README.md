@@ -1,31 +1,39 @@
 # Reflex Statum
 
-Un petit jeu de réflexes pour Windows, développé par **FCC**. Trouvez les nombres dans l’ordre avant la fin du temps.
+Un jeu de réflexes pour Windows, développé par **FCC**.
 
-**[Télécharger Reflex Statum pour Windows](https://github.com/coconut971/reflex-statum/releases/download/v0.4.0/INSTALLER_REFLEX_STATUM.exe)**
+**[Télécharger Reflex Statum pour Windows](https://github.com/coconut971/reflex-statum/releases/download/v0.5.0/INSTALLER_REFLEX_STATUM.exe)**
 
-Version de test **0.4.0** · Windows 10 ou 11, 64 bits
+Version de test **0.5.0** · Windows 10 ou 11, 64 bits
 
 ## Installer et jouer
 
-1. Téléchargez **INSTALLER_REFLEX_STATUM.exe** avec le bouton ci-dessus ou depuis la [page de la version 0.4.0](https://github.com/coconut971/reflex-statum/releases/tag/v0.4.0).
-2. Ouvrez le fichier téléchargé et suivez les étapes d’installation.
+1. Téléchargez **INSTALLER_REFLEX_STATUM.exe** avec le lien ci-dessus ou depuis la [page de la version 0.5.0](https://github.com/coconut971/reflex-statum/releases/tag/v0.5.0).
+2. Fermez le jeu s’il est déjà ouvert, puis ouvrez l’installateur et suivez les étapes.
 3. Lancez **Reflex Statum** depuis le menu Démarrer ou le raccourci du Bureau.
-4. Au premier lancement, choisissez votre pseudo. Le jeu génère votre identifiant.
-5. Choisissez **25 cases / 25 secondes** ou **30 cases / 29 secondes**, puis **Jouer**.
+4. Au premier lancement, choisissez votre pseudo.
+5. Cliquez sur **Jouer**, choisissez un jeu, puis sa difficulté et **Démarrer**.
 
-Dans la pause, **Retour à l’accueil** permet d’abandonner la partie sans fermer le jeu. La fermeture de l’application reste une action distincte.
+Dans la pause, **Retour à l’accueil** permet d’abandonner la partie sans fermer le jeu.
+
+## Cette mise à jour
+
+L’accueil et la création du profil sont plus simples. Un catalogue présente les jeux et donne accès à leur fiche, aux difficultés et aux records locaux.
+
+**Séquence** est disponible avec quatre difficultés : Découverte, Classique, Intense et Expert. Mémoire, Couleurs, Impulsion, Précision et Repérage sont annoncés **À venir**.
+
+Le classement présenté dans les fiches est un aperçu indiqué **À venir**. Aucun classement en ligne n’est encore actif.
 
 ## Votre profil
 
-Deux joueurs peuvent choisir le même pseudo. Chaque profil reçoit un identifiant propre, qui reste identique lorsque le pseudo change. Le profil, les préférences et les records sont conservés sur votre ordinateur lors des mises à jour et de la désinstallation.
-
-Cette première version utilise un **profil local**. La connexion à un compte et la synchronisation entre ordinateurs ou plateformes viendront dans une étape ultérieure.
+Vous pouvez modifier votre pseudo depuis le profil. Votre identifiant, vos préférences et vos records sont conservés lors des mises à jour. Ils restent enregistrés sur votre ordinateur, y compris après désinstallation. La synchronisation entre appareils n’est pas encore disponible.
 
 ## Participer au test
 
-Le [guide de test Windows](TEST_WINDOWS.md) décrit les vérifications utiles et les retours à transmettre à Franck.
+Le [guide de test Windows](TEST_WINDOWS.md) propose un parcours court et un modèle de retour à transmettre à Franck.
+
+Retrouvez aussi les [actualités du jeu](https://coconut971.github.io/reflex-statum/), accessibles avec le bouton **?** dans le jeu.
 
 L’installation n’est pas encore signée numériquement. Si Windows la bloque, transmettez le message exact à Franck avant de poursuivre.
 
-Ce dépôt distribue le jeu compilé et son guide. Les licences des bibliothèques utilisées sont incluses avec le jeu, dans le dossier `licenses`. Le code source n’est pas publié ici.
+Ce dépôt distribue le jeu compilé et son guide. Les licences des bibliothèques sont incluses dans le dossier `licenses` du jeu. Le code source de l’application n’est pas publié ici.
