@@ -6,7 +6,14 @@
     <description>Les mises à jour et les nouveautés de Reflex Statum, développé par FCC.</description>
     <language>fr-FR</language>
     <atom:link href="https://coconut971.github.io/reflex-statum/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Sat, 24 Oct 2026 17:55:35 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 18:24:33 +0200</lastBuildDate>
+    <item>
+      <title>Version 0.5.0 — un parcours plus naturel pour entrer dans le jeu</title>
+      <link>https://coconut971.github.io/reflex-statum/#version-0-5-0</link>
+      <guid isPermaLink="true">https://coconut971.github.io/reflex-statum/#version-0-5-0</guid>
+      <pubDate>Sat, 24 Oct 2026 18:24:33 +0200</pubDate>
+      <description>Un écran de bienvenue recentré, une bibliothèque de six jeux et quatre difficultés pour Séquence. Séquence est jouable ; les cinq autres jeux et les classements en ligne restent annoncés à venir. La version de test 0.5.0 est disponible sur Windows.</description>
+    </item>
     <item>
       <title>Version 0.4.0 — le premier test Windows est ouvert</title>
       <link>https://coconut971.github.io/reflex-statum/#version-0-4-0</link>
