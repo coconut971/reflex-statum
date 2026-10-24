@@ -1,43 +1,45 @@
 # Tester Reflex Statum sur Windows
 
-Merci de tester cette première version de **Reflex Statum**, développé par FCC.
+Merci de tester **Reflex Statum 0.5.0**, développé par FCC.
 
 ## Télécharger le jeu
 
-Téléchargez uniquement [INSTALLER_REFLEX_STATUM.exe — version 0.4.0](https://github.com/coconut971/reflex-statum/releases/download/v0.4.0/INSTALLER_REFLEX_STATUM.exe), puis ouvrez-le.
+Téléchargez [INSTALLER_REFLEX_STATUM.exe — version 0.5.0](https://github.com/coconut971/reflex-statum/releases/download/v0.5.0/INSTALLER_REFLEX_STATUM.exe), fermez une éventuelle ancienne fenêtre du jeu, puis ouvrez l’installateur.
 
-L’installation concerne votre session Windows. Vous pouvez conserver ou désactiver le raccourci sur le Bureau. Lancez ensuite **Reflex Statum** depuis le menu Démarrer ou le Bureau.
+Le jeu apparaît dans le menu Démarrer. Le raccourci du Bureau est optionnel. Les profils, réglages et records déjà enregistrés sont conservés par la mise à jour.
 
 Le jeu nécessite Windows 10 ou 11, 64 bits. L’installation n’est pas encore signée numériquement. Si Windows la bloque, arrêtez-vous et transmettez le message exact à Franck.
 
 ## Parcours à essayer
 
-1. Au premier lancement, créez un profil avec le pseudo de votre choix. Vérifiez qu’un identifiant généré accompagne le profil.
-2. Lancez une partie de **25 cases**. Cliquez sur les nombres dans l’ordre. Essayez aussi une erreur pour vérifier que sa pénalité est compréhensible.
-3. Ouvrez **Pause**, puis **Retour à l’accueil**. Confirmez : vous devez revenir au choix de difficulté et le jeu doit rester ouvert.
-4. Lancez une partie de **30 cases**, puis essayez **Pause**, **Reprendre** et **Recommencer**.
-5. Changez votre pseudo : l’identifiant de votre profil doit rester le même.
-6. Fermez complètement le jeu et rouvrez-le. Vérifiez votre pseudo, votre identifiant, vos réglages et vos éventuels records.
-7. Essayez la petite fenêtre et une fenêtre agrandie. Vérifiez que les nombres sont lisibles et que vos clics correspondent aux cases.
+1. Au premier lancement, choisissez un pseudo sur l’écran **Bienvenue**. Si vous aviez déjà un profil, vérifiez qu’il est retrouvé.
+2. Cliquez sur **Jouer**. Parcourez le catalogue, puis ouvrez **Séquence**. Les autres jeux sont indiqués **À venir**.
+3. Choisissez une difficulté parmi **Découverte**, **Classique**, **Intense** et **Expert**, puis **Démarrer**. Vérifiez que ce parcours vous paraît clair et que les informations utiles sont lisibles.
+4. Pendant une partie, essayez une erreur puis **Pause**, **Reprendre** et **Recommencer**.
+5. Ouvrez **Pause → Retour à l’accueil**, puis confirmez. Le jeu doit rester ouvert et vous devez pouvoir relancer une partie.
+6. Regardez les records locaux et l’aperçu du classement dans la fiche du jeu. Le classement est indiqué **À venir** ; il n’affiche pas de résultats en ligne.
+7. Ouvrez les actualités avec **?**. La page du jeu doit s’ouvrir dans votre navigateur.
+8. Fermez et rouvrez le jeu. Vérifiez votre pseudo, vos réglages et vos éventuels records. Essayez aussi une petite fenêtre et une fenêtre agrandie.
 
-Une pause après l’apparition des nombres rend cette partie inéligible aux records. Les autres parties et les records déjà enregistrés restent conservés.
-
-Le profil est local à cet ordinateur. Cette version ne propose pas encore de compte connecté ou de synchronisation.
+Une pause après l’apparition des nombres rend cette partie inéligible aux records. Les records précédemment enregistrés restent conservés.
 
 ## Retour à transmettre à Franck
 
 Copiez ce modèle et complétez-le :
 
 ```text
-Reflex Statum 0.4.0 — retour de test
+Reflex Statum 0.5.0 — retour de test
 
 Windows : 10 / 11
-Installation et lancement : OK / problème
-Profil conservé après fermeture et réouverture : oui / non
+Installation ou mise à jour : OK / problème
+Profil retrouvé après réouverture : oui / non
+Bienvenue et choix du pseudo : clair / à améliorer
+Catalogue et choix de difficulté : clair / à améliorer
 Retour à l’accueil depuis la pause : OK / problème
-Palier essayé : 25 / 30 / les deux
+Jeu et difficulté essayés :
 Lisibilité et clics : OK / problème
-Plaisir de jeu / difficulté :
+Actualités avec ? : OK / problème
+Plaisir de jeu et difficulté :
 Ce qui m’a surpris ou gêné :
 
 Si problème :
