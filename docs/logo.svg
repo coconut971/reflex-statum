@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+<title id="title">Reflex Statum — grille ouverte, cœur et points</title>
+<g fill="none" stroke="#F6F2E7" stroke-opacity=".76" stroke-width="5" stroke-linecap="round">
+<path d="M92 26V230 M164 26V230 M26 92H230 M26 164H230"/>
+</g>
+<rect x="111" y="111" width="34" height="34" rx="5" fill="#C5FA59"/>
+<circle cx="128" cy="56" r="8" fill="#C5FA59"/>
+<circle cx="56" cy="200" r="5" fill="#F6F2E7" opacity=".53"/>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reflex Statum — actualités</title>
+    <link>https://coconut971.github.io/reflex-statum/</link>
+    <description>Les mises à jour et les nouveautés de Reflex Statum, développé par FCC.</description>
+    <language>fr-FR</language>
+    <atom:link href="https://coconut971.github.io/reflex-statum/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2026 17:55:35 +0200</lastBuildDate>
+    <item>
+      <title>Version 0.4.0 — le premier test Windows est ouvert</title>
+      <link>https://coconut971.github.io/reflex-statum/#version-0-4-0</link>
+      <guid isPermaLink="true">https://coconut971.github.io/reflex-statum/#version-0-4-0</guid>
+      <pubDate>Sat, 24 Oct 2026 17:55:35 +0200</pubDate>
+      <description>Reflex Statum est disponible en version de test pour Windows. Choisissez votre pseudo, jouez à Séquence et partagez vos retours avec Franck. Un profil local, le retour à l’accueil et un installateur Windows sont inclus.</description>
+    </item>
+  </channel>
+</rss>
