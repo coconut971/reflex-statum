@@ -6,6 +6,12 @@ Un jeu de réflexes pour Windows, développé par **FCC**.
 
 Version de test **0.5.0** · Windows 10 ou 11, 64 bits
 
+## Prototype Godot à essayer dans un navigateur
+
+**[Jouer au prototype Séquence](https://coconut971.github.io/reflex-statum/essai-godot/)** — version d'essai 0.2.0, cinq étapes. Sur iPhone, ouvrir ce lien dans Safari puis toucher **Jouer à Séquence**. Aucun téléchargement d'application iOS n'est nécessaire.
+
+La progression reste dans ce navigateur ; elle n'est pas synchronisée avec le jeu Windows. Cet essai sert aussi à vérifier la compatibilité sur de vrais iPhone. Pour un retour utile : modèle du téléphone, version iOS, chargement, confort tactile et éventuel problème avec capture.
+
 ## Installer et jouer
 
 1. Téléchargez **INSTALLER_REFLEX_STATUM.exe** avec le lien ci-dessus ou depuis la [page de la version 0.5.0](https://github.com/coconut971/reflex-statum/releases/tag/v0.5.0).

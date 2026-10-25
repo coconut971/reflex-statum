@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101311">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Essayez Séquence, le jeu de réflexes de Reflex Statum. Prototype développé par FCC.">
+  <title>Reflex Statum · Séquence</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #101311; color: #f6f2e7; font-family: system-ui, sans-serif; }
+    #frame { position: fixed; top: env(safe-area-inset-top, 0px); right: env(safe-area-inset-right, 0px); bottom: env(safe-area-inset-bottom, 0px); left: env(safe-area-inset-left, 0px); }
+    #canvas { display: block; width: 100%; height: 100%; border: 0; outline: none; touch-action: none; }
+    #launch { position: absolute; inset: 0; padding: 28px; display: grid; place-content: center; text-align: center; background: #101311; }
+    .mark { width: 78px; height: 78px; margin: 0 auto 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+    .mark span { border: 1px solid #45583a; border-radius: 4px; display: grid; place-content: center; }
+    .mark span:nth-child(5) { background: #c5fa59; border-color: #c5fa59; }
+    .mark span:nth-child(2)::after, .mark span:nth-child(9)::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #c5fa59; }
+    .eyebrow { color: #c5fa59; letter-spacing: .12em; font-size: 12px; font-weight: 700; }
+    h1 { font-size: clamp(32px, 7vw, 48px); letter-spacing: -.04em; margin: 12px 0; }
+    p { color: #9da99f; line-height: 1.5; margin: 10px auto; max-width: 32ch; }
+    button { min-height: 56px; padding: 14px 24px; background: #c5fa59; color: #101311; border: 0; border-radius: 14px; font: inherit; font-weight: 700; cursor: pointer; margin: 22px 0 8px; }
+    button:focus-visible { outline: 3px solid #f6f2e7; outline-offset: 4px; }
+    button:disabled { opacity: .6; cursor: wait; }
+    progress { width: 100%; height: 5px; margin-top: 22px; accent-color: #c5fa59; }
+    #notice { font-size: 13px; }
+    .small { font-size: 12px; }
+    a { color: #9da99f; }
+    [hidden] { display: none !important; }
+  </style>
+  <link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
+<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+
+</head>
+<body>
+  <main id="frame">
+    <canvas id="canvas" tabindex="0" aria-label="Jeu Séquence de Reflex Statum">Votre navigateur doit prendre en charge WebGL 2 pour jouer.</canvas>
+    <section id="launch" aria-label="Lancer Séquence">
+      <div class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="eyebrow">DÉVELOPPÉ PAR FCC</div>
+      <h1>Reflex Statum</h1>
+      <p>Un nombre. Puis le suivant.<br>À vous de jouer.</p>
+      <button id="play" type="button">Jouer à Séquence</button>
+      <progress id="progress" aria-label="Chargement du jeu" hidden></progress>
+      <p id="notice" role="status" aria-live="polite">Version d’essai · 5 étapes</p>
+      <p class="small">Sur iPhone, ouvrez ce lien dans Safari.<br>La progression reste dans ce navigateur.</p>
+      <a class="small" href="LICENSES.txt" target="_blank" rel="noopener">Crédits et licences</a>
+    </section>
+  </main>
+  <noscript>Activez JavaScript dans votre navigateur pour jouer à Séquence.</noscript>
+  <script src="index.js"></script>
+  <script>
+    'use strict';
+    const config = {"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":510024,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+    const frame = document.getElementById('frame');
+    const canvas = document.getElementById('canvas');
+    const launch = document.getElementById('launch');
+    const play = document.getElementById('play');
+    const progress = document.getElementById('progress');
+    const notice = document.getElementById('notice');
+    let starting = false;
+    let engine = null;
+    let recovering = false;
+    function showRecovery(message) {
+      launch.hidden = false;
+      notice.textContent = message;
+      play.textContent = 'Recharger la page';
+      play.disabled = false;
+      progress.hidden = true;
+      play.onclick = () => window.location.reload();
+    }
+    canvas.addEventListener('webglcontextlost', (event) => {
+      event.preventDefault();
+      if (recovering) return;
+      recovering = true;
+      console.error('Reflex Statum: contexte graphique interrompu.');
+      if (engine) engine.requestQuit();
+      showRecovery('L’affichage a été interrompu. Rechargez la page pour reprendre le jeu.');
+    });
+    // Canvas resize policy 0: the shell owns its safe-area-aware dimensions.
+    function fitCanvas() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      const width = Math.max(1, Math.round(frame.clientWidth * ratio));
+      const height = Math.max(1, Math.round(frame.clientHeight * ratio));
+      if (canvas.width !== width) canvas.width = width;
+      if (canvas.height !== height) canvas.height = height;
+    }
+    new ResizeObserver(fitCanvas).observe(frame);
+    fitCanvas();
+    play.addEventListener('click', async () => {
+      if (starting) return;
+      starting = true;
+      play.disabled = true;
+      progress.hidden = false;
+      notice.textContent = 'Chargement de Séquence…';
+      try {
+        const missing = Engine.getMissingFeatures({ threads: false });
+        if (missing.length) throw new Error(missing.join(', '));
+        engine = new Engine(config);
+        await engine.startGame({ canvas, canvasResizePolicy: 0, locale: 'fr',
+          onProgress(current, total) {
+            if (total > 0) { progress.max = total; progress.value = current; }
+            else progress.removeAttribute('value');
+          }
+        });
+        if (!recovering) {
+          launch.hidden = true;
+          canvas.focus();
+        }
+      } catch (error) {
+        console.error(error);
+        showRecovery('Le jeu n’a pas pu démarrer. Rechargez la page dans un navigateur récent, puis réessayez.');
+      }
+    });
+  </script>
+</body>
+</html>
+
