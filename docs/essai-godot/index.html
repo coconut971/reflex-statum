@@ -6,18 +6,24 @@
   <meta name="theme-color" content="#101311">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="description" content="Essayez Séquence, le jeu de réflexes de Reflex Statum. Prototype développé par FCC.">
-  <title>Reflex Statum · Séquence</title>
+  <meta name="description" content="Reflex Statum, jeu développé par FCC. Séquence est disponible en version d’essai.">
+  <title>Reflex Statum</title>
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #101311; color: #f6f2e7; font-family: system-ui, sans-serif; }
-    #frame { position: fixed; top: env(safe-area-inset-top, 0px); right: env(safe-area-inset-right, 0px); bottom: env(safe-area-inset-bottom, 0px); left: env(safe-area-inset-left, 0px); }
+    #frame { position: fixed; top: calc(env(safe-area-inset-top, 0px) + var(--visual-viewport-top, 0px)); right: env(safe-area-inset-right, 0px); bottom: calc(env(safe-area-inset-bottom, 0px) + var(--visual-viewport-bottom, 0px)); left: env(safe-area-inset-left, 0px); }
     #canvas { display: block; width: 100%; height: 100%; border: 0; outline: none; touch-action: none; }
-    #launch { position: absolute; inset: 0; padding: 28px; display: grid; place-content: center; text-align: center; background: #101311; }
-    .mark { width: 78px; height: 78px; margin: 0 auto 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
-    .mark span { border: 1px solid #45583a; border-radius: 4px; display: grid; place-content: center; }
-    .mark span:nth-child(5) { background: #c5fa59; border-color: #c5fa59; }
-    .mark span:nth-child(2)::after, .mark span:nth-child(9)::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #c5fa59; }
+    #launch { position: absolute; inset: 0; padding: 28px; display: grid; place-content: center; align-content: safe center; overflow-y: auto; text-align: center; background: #101311; }
+    .mark { position: relative; width: 78px; height: 78px; margin: 0 auto 30px; }
+    .mark .rail { position: absolute; background: rgb(246 242 231 / 32%); }
+    .mark .vertical { top: 14%; height: 72%; width: 1.4px; transform: translateX(-50%); }
+    .mark .horizontal { left: 14%; width: 72%; height: 1.4px; transform: translateY(-50%); }
+    .mark .first { left: 38%; }
+    .mark .second { left: 62%; }
+    .mark .upper { top: 38%; }
+    .mark .lower { top: 62%; }
+    .mark .center { position: absolute; left: 44.75%; top: 44.75%; width: 10.5%; height: 10.5%; border-radius: 3px; background: #c5fa59; }
+    .mark .point { position: absolute; left: 74%; top: 26%; width: 6.4%; height: 6.4%; border-radius: 50%; transform: translate(-50%, -50%); background: #c5fa59; opacity: 0; }
     .eyebrow { color: #c5fa59; letter-spacing: .12em; font-size: 12px; font-weight: 700; }
     h1 { font-size: clamp(32px, 7vw, 48px); letter-spacing: -.04em; margin: 12px 0; }
     p { color: #9da99f; line-height: 1.5; margin: 10px auto; max-width: 32ch; }
@@ -30,42 +36,71 @@
     a { color: #9da99f; }
     [hidden] { display: none !important; }
   </style>
-  <link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
-<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+  <link id="-gd-engine-icon" rel="icon" type="image/png" href="reflex-0.5.0-47acb1d939c8.icon.png" />
+<link rel="apple-touch-icon" href="reflex-0.5.0-47acb1d939c8.apple-touch-icon.png"/>
 
 </head>
 <body>
   <main id="frame">
-    <canvas id="canvas" tabindex="0" aria-label="Jeu Séquence de Reflex Statum">Votre navigateur doit prendre en charge WebGL 2 pour jouer.</canvas>
-    <section id="launch" aria-label="Lancer Séquence">
-      <div class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <canvas id="canvas" tabindex="0" aria-label="Application Reflex Statum">Le jeu ne peut pas être affiché dans ce navigateur</canvas>
+    <section id="launch" aria-label="Lancer Reflex Statum">
+      <div class="mark" aria-hidden="true"><span class="rail vertical first"></span><span class="rail vertical second"></span><span class="rail horizontal upper"></span><span class="rail horizontal lower"></span><span class="center" id="logo-center"></span><span class="point" id="logo-point"></span></div>
       <div class="eyebrow">DÉVELOPPÉ PAR FCC</div>
       <h1>Reflex Statum</h1>
-      <p>Un nombre. Puis le suivant.<br>À vous de jouer.</p>
-      <button id="play" type="button">Jouer à Séquence</button>
+      <button id="play" type="button">Ouvrir Reflex Statum</button>
       <progress id="progress" aria-label="Chargement du jeu" hidden></progress>
-      <p id="notice" role="status" aria-live="polite">Version d’essai · 5 étapes</p>
-      <p class="small">Sur iPhone, ouvrez ce lien dans Safari.<br>La progression reste dans ce navigateur.</p>
+      <p id="notice" role="status" aria-live="polite" hidden></p>
       <a class="small" href="LICENSES.txt" target="_blank" rel="noopener">Crédits et licences</a>
     </section>
   </main>
-  <noscript>Activez JavaScript dans votre navigateur pour jouer à Séquence.</noscript>
-  <script src="index.js"></script>
+  <noscript>Activez JavaScript dans votre navigateur pour ouvrir Reflex Statum.</noscript>
+  <script src="reflex-0.5.0-47acb1d939c8.js"></script>
   <script>
     'use strict';
-    const config = {"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":516772,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+    const config = {"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"reflex-0.5.0-47acb1d939c8","experimentalVK":true,"fileSizes":{"reflex-0.5.0-47acb1d939c8.pck":630676,"reflex-0.5.0-47acb1d939c8.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
     const frame = document.getElementById('frame');
     const canvas = document.getElementById('canvas');
     const launch = document.getElementById('launch');
     const play = document.getElementById('play');
     const progress = document.getElementById('progress');
     const notice = document.getElementById('notice');
+    const logoCenter = document.getElementById('logo-center');
+    const logoPoint = document.getElementById('logo-point');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let logoAnimations = [];
+    let logoMotionGeneration = 0;
     let starting = false;
     let engine = null;
     let recovering = false;
+    function stopLogoMotion() {
+      logoMotionGeneration++;
+      for (const animation of logoAnimations) animation.cancel();
+      logoAnimations = [];
+    }
+    function startLogoMotion() {
+      stopLogoMotion();
+      if (motionPreference.matches || document.hidden || typeof logoPoint.animate !== 'function') return;
+      const generation = logoMotionGeneration;
+      const coordinates = [26, 50, 74];
+      const route = [2, 1, 0, 3, 6, 7, 8, 5, 2, 4];
+      const frames = route.map((cell, index) => ({ left: coordinates[cell % 3] + '%', top: coordinates[Math.floor(cell / 3)] + '%', opacity: 1, offset: index / 10, easing: 'steps(1, end)' }));
+      frames.push({ left: '50%', top: '50%', opacity: 0, offset: 1 });
+      logoAnimations = [
+        logoPoint.animate(frames, { duration: 1800, easing: 'linear' }),
+        logoCenter.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.16)', offset: 0.35 }, { transform: 'scale(1)' }], { delay: 1620, duration: 180, easing: 'ease-out' })
+      ];
+      Promise.all(logoAnimations.map(animation => animation.finished.catch(() => {}))).then(() => {
+        if (generation === logoMotionGeneration) logoAnimations = [];
+      });
+    }
+    motionPreference.addEventListener('change', event => { if (event.matches) stopLogoMotion(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stopLogoMotion(); });
+    window.addEventListener('pagehide', stopLogoMotion);
     function showRecovery(message) {
+      stopLogoMotion();
       launch.hidden = false;
       notice.textContent = message;
+      notice.hidden = false;
       play.textContent = 'Recharger la page';
       play.disabled = false;
       progress.hidden = true;
@@ -75,12 +110,23 @@
       event.preventDefault();
       if (recovering) return;
       recovering = true;
+      stopLogoMotion();
       console.error('Reflex Statum: contexte graphique interrompu.');
       if (engine) engine.requestQuit();
       showRecovery('L’affichage a été interrompu. Rechargez la page pour reprendre le jeu.');
     });
-    // Canvas resize policy 0: the shell owns its safe-area-aware dimensions.
+    const visibleViewport = window.visualViewport;
+    // Keep the canvas inside the visible viewport when a keyboard covers the
+    // layout viewport. Pinch zoom keeps the layout size instead of reflowing it.
     function fitCanvas() {
+      let top = 0;
+      let bottom = 0;
+      if (visibleViewport && Number.isFinite(visibleViewport.scale) && Math.abs(visibleViewport.scale - 1) < 0.01 && Number.isFinite(visibleViewport.height) && visibleViewport.height > 0 && Number.isFinite(visibleViewport.offsetTop)) {
+        top = Math.max(0, visibleViewport.offsetTop);
+        bottom = Math.max(0, window.innerHeight - visibleViewport.height - top);
+      }
+      frame.style.setProperty('--visual-viewport-top', Math.ceil(top) + 'px');
+      frame.style.setProperty('--visual-viewport-bottom', Math.ceil(bottom) + 'px');
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
       const width = Math.max(1, Math.round(frame.clientWidth * ratio));
       const height = Math.max(1, Math.round(frame.clientHeight * ratio));
@@ -88,14 +134,21 @@
       if (canvas.height !== height) canvas.height = height;
     }
     new ResizeObserver(fitCanvas).observe(frame);
+    window.addEventListener('resize', fitCanvas);
+    if (visibleViewport) {
+      visibleViewport.addEventListener('resize', fitCanvas);
+      visibleViewport.addEventListener('scroll', fitCanvas);
+    }
     fitCanvas();
     play.addEventListener('click', async () => {
       if (starting) return;
       starting = true;
       play.disabled = true;
       progress.hidden = false;
-      notice.textContent = 'Chargement de Séquence…';
+      notice.textContent = 'Chargement de Reflex Statum';
+      notice.hidden = false;
       try {
+        startLogoMotion();
         const missing = Engine.getMissingFeatures({ threads: false });
         if (missing.length) throw new Error(missing.join(', '));
         engine = new Engine(config);
@@ -106,6 +159,7 @@
           }
         });
         if (!recovering) {
+          stopLogoMotion();
           launch.hidden = true;
           canvas.focus();
         }

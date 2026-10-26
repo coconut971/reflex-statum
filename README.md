@@ -8,7 +8,7 @@ Version de test **0.5.0** · Windows 10 ou 11, 64 bits
 
 ## Prototype Godot à essayer dans un navigateur
 
-**[Jouer au prototype Séquence](https://coconut971.github.io/reflex-statum/essai-godot/)** — version d'essai 0.2.1, cinq étapes. Sur iPhone, ouvrir ce lien dans Safari puis toucher **Jouer à Séquence**. Aucun téléchargement d'application iOS n'est nécessaire.
+**[Jouer au prototype Godot](https://coconut971.github.io/reflex-statum/essai-godot/)** — version de test 0.5.0, progression générée de Séquence, difficulté évolutive et XP personnelle. Sur iPhone, ouvrir ce lien dans Safari puis toucher **Ouvrir Reflex Statum**. Aucun téléchargement d'application iOS n'est nécessaire. La progression reste enregistrée dans ce navigateur.
 
 Cette passe renforce les sauvegardes, les interruptions et la validation des niveaux, et réduit du travail graphique inutile. La qualification de l'application générale reste en cours.
 
